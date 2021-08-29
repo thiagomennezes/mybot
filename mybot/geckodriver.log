@@ -1,0 +1,30 @@
+1630209152644	geckodriver	INFO	Listening on 127.0.0.1:57753
+1630209152649	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilesvAu40"
+1630209162395	Marionette	INFO	Marionette enabled
+ExceptionHandler::GenerateDump cloned child 40503
+ExceptionHandler::SendContinueSignalToChild sent continue signal to child
+ExceptionHandler::WaitForContinueSignal waiting for continue signal...
+1630209754952	geckodriver	INFO	Listening on 127.0.0.1:48933
+1630209754959	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileMXsCuu"
+1630209756908	Marionette	INFO	Marionette enabled
+ExceptionHandler::GenerateDump cloned child 41776ExceptionHandler::WaitForContinueSignal waiting for continue signal...
+
+ExceptionHandler::SendContinueSignalToChild sent continue signal to child
+1630209757997	geckodriver	INFO	Listening on 127.0.0.1:41577
+1630209758004	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilel1kw8Z"
+1630209759913	Marionette	INFO	Marionette enabled
+ExceptionHandler::GenerateDump cloned child 41877ExceptionHandler::WaitForContinueSignal waiting for continue signal...
+
+ExceptionHandler::SendContinueSignalToChild sent continue signal to child
+1630209878826	geckodriver	INFO	Listening on 127.0.0.1:52703
+1630209878834	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile05vzDt"
+1630209880838	Marionette	INFO	Marionette enabled
+ExceptionHandler::GenerateDump cloned child 42196
+ExceptionHandler::WaitForContinueSignal waiting for continue signal...
+ExceptionHandler::SendContinueSignalToChild sent continue signal to child
+1630209882295	geckodriver	INFO	Listening on 127.0.0.1:52681
+1630209882302	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileVEUDJV"
+1630209884314	Marionette	INFO	Marionette enabled
+ExceptionHandler::GenerateDump cloned child 42297
+ExceptionHandler::WaitForContinueSignal waiting for continue signal...
+ExceptionHandler::SendContinueSignalToChild sent continue signal to child
