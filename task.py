@@ -47,15 +47,16 @@ class MyBot:
             found = False
             for e in data["excel"]:
                 if e["A"] == p["uii"] and e["C"] == p["title"]:
-                    message = f"{p['uii']}: Titles match to {p['title']}\n"
+                    message += f"{p['uii']}: Titles match to {p['title']}\n"
                     found = True
                     break
                 if e["A"] == p["uii"] and e["C"] != p["title"]:
-                    message = f"{p['uii']}: Titles unmatch --> {p['title']} != {e['C']}\n"
+                    message += f"{p['uii']}: Titles unmatch --> {p['title']} != {e['C']}\n"
                     found = True
                     break
             if not found:
-                message = f"{p['uii']}: Not found\n"
+                message += f"{p['uii']}: Not found\n"
+        print(message)
         fs = FileSystem()
         fs.create_file(f"{self.dirpath}/compare-pdf.txt", message, "utf-8", True)
 
