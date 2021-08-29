@@ -57,7 +57,7 @@ class MyBot:
             if not found:
                 message = f"{p['uii']}: Not found\n"
         fs = FileSystem()
-        fs.create_file(f"{self.dirpath}/compare-pdf.txt", "utf-8", True)
+        fs.create_file(f"{self.dirpath}/compare-pdf.txt", message, "utf-8", True)
 
     def __convert_table_to_excel(self):
         file = Files()
