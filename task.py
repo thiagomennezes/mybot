@@ -5,7 +5,6 @@ from RPA.PDF import PDF
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from threading import Thread
 
 import json
 import re
@@ -39,6 +38,7 @@ class MyBot:
             self.browser.close_all_browsers()
 
     def __compare_data(self):
+        message = ""
         data = {"excel": None, "pdf": []}
         for filepath in self.filepaths["pdf"]:
             data["pdf"].append(self.__extract_data_from_pdf(filepath))
@@ -47,21 +47,17 @@ class MyBot:
             found = False
             for e in data["excel"]:
                 if e["A"] == p["uii"] and e["C"] == p["title"]:
-                    print(f"{p['uii']}: Titles match to {p['title']}")
+                    message = f"{p['uii']}: Titles match to {p['title']}\n"
                     found = True
                     break
                 if e["A"] == p["uii"] and e["C"] != p["title"]:
-                    print(f"{p['uii']}: Titles unmatch --> {p['title']} != {e['C']}")
+                    message = f"{p['uii']}: Titles unmatch --> {p['title']} != {e['C']}\n"
                     found = True
                     break
             if not found:
-                print(f"{p['uii']}: Not found")
-
-    def __create_excel(self):
-        file = Files()
-        file.create_workbook(self.filepaths["excel"], "xlsx")
-        file.save_workbook()
-        file.close_workbook()
+                message = f"{p['uii']}: Not found\n"
+        fs = FileSystem()
+        fs.create_file(f"{self.dirpath}/compare-pdf.txt", "utf-8", True)
 
     def __convert_table_to_excel(self):
         file = Files()
@@ -84,6 +80,12 @@ class MyBot:
         finally:
             file.close_workbook()
 
+    def __create_excel(self):
+        file = Files()
+        file.create_workbook(self.filepaths["excel"], "xlsx")
+        file.save_workbook()
+        file.close_workbook()
+
     def __download_files(self):
         ancors = self.browser.find_elements(
             "css:#investments-table-object tbody > tr td:nth-of-type(1) a"
@@ -94,13 +96,10 @@ class MyBot:
             filename = a.text
             self.filepaths["pdf"].append(f"{self.dirpath}/{filename}.pdf")
         indexes = range(0, len(links))
-        threads = []
         for i in indexes:
             self.browser.open_available_browser(links[i]) 
             self.browser.click_element_when_visible("css:#business-case-pdf > a")
-            threads.append(Thread(target=self.__wait_download, args=(self.filepaths["pdf"][i])))
-            threads[-1].start()
-            threads[-1].join()
+            self.__wait_download(self.filepaths["pdf"][i])
 
     def __extract_data_from_excel(self, filepath, worksheet):
         file = Files()
@@ -175,7 +174,6 @@ class MyBot:
             )
             and countdown > 0
         ):
-            print(countdown)
             time.sleep(3)
             countdown -= 1
 
