@@ -56,7 +56,6 @@ class MyBot:
                     break
             if not found:
                 message += f"{p['uii']}: Not found\n"
-        print(message)
         fs = FileSystem()
         fs.create_file(f"{self.dirpath}/compare-pdf.txt", message, "utf-8", True)
 
